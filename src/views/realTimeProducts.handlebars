@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos en Tiempo Real</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Productos en Tiempo Real</h1>
+
+  <ul id="product-list">
+    {{#each products}}
+      <li>
+        <strong>{{this.title}}</strong> - ${{this.price}} (Stock: {{this.stock}})
+      </li>
+    {{/each}}
+  </ul>
+
+  <form id="add-product-form">

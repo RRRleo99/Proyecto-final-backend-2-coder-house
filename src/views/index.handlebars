@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio - E-commerce</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Bienvenido al E-commerce</h1>
+
+  <h2>Listado de Productos</h2>
+  <ul>
+    {{#each products}}
+      <li>
+        <strong>{{this.title}}</strong><br>
+        Precio: ${{this.price}}<br>
