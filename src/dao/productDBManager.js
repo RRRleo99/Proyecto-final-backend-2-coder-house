@@ -1,4 +1,4 @@
-import ProductModel from '../models/product.model.js';
+import ProductModel from '../dao/models/product.model.js';
 
 class ProductManager {
   // Obtener todos los productos
