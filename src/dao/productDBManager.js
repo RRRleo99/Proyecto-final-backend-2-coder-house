@@ -22,7 +22,7 @@ class ProductManager {
     return await ProductModel.findByIdAndUpdate(pid, updateData, { new: true });
   }
 
-  // Eliminar un producto por ID
+  // liminar un producto por ID
   async deleteProduct(pid) {
     return await ProductModel.findByIdAndDelete(pid);
   }

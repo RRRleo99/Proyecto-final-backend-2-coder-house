@@ -9,7 +9,7 @@ class TicketRepository {
     return await TicketModel.findOne({ code });
   }
 
-  // Agregá más métodos si los necesitás
+
 }
 
 export default TicketRepository;

@@ -5,7 +5,6 @@ import { authorizeRole } from '../middlewares/authorization.js';
 const router = Router();
 const productRepo = new ProductRepository();
 
-// Obtener todos los productos (público)
 router.get('/', async (req, res) => {
   try {
     const products = await productRepo.getAll();
@@ -15,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obtener un producto por ID (público)
+
 router.get('/:pid', async (req, res) => {
   try {
     const product = await productRepo.getById(req.params.pid);
@@ -26,7 +25,7 @@ router.get('/:pid', async (req, res) => {
   }
 });
 
-// Crear un nuevo producto (solo admin)
+
 router.post('/', authorizeRole('admin'), async (req, res) => {
   try {
     const newProduct = await productRepo.create(req.body);
@@ -36,7 +35,7 @@ router.post('/', authorizeRole('admin'), async (req, res) => {
   }
 });
 
-// Actualizar un producto por ID (solo admin)
+
 router.put('/:pid', authorizeRole('admin'), async (req, res) => {
   try {
     const updatedProduct = await productRepo.update(req.params.pid, req.body);
@@ -47,7 +46,7 @@ router.put('/:pid', authorizeRole('admin'), async (req, res) => {
   }
 });
 
-// Eliminar un producto por ID (solo admin)
+
 router.delete('/:pid', authorizeRole('admin'), async (req, res) => {
   try {
     const deletedProduct = await productRepo.delete(req.params.pid);

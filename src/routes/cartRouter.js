@@ -10,7 +10,7 @@ const cartRepo = new CartRepository();
 const productRepo = new ProductRepository();
 const ticketRepo = new TicketRepository();
 
-// Obtener todos los carritos
+
 router.get('/', async (req, res) => {
   try {
     const carts = await cartRepo.getAll();
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obtener un carrito por ID
+
 router.get('/:cid', async (req, res) => {
   try {
     const cart = await cartRepo.getById(req.params.cid);
@@ -31,7 +31,6 @@ router.get('/:cid', async (req, res) => {
   }
 });
 
-// Crear un nuevo carrito
 router.post('/', async (req, res) => {
   try {
     const newCart = await cartRepo.create();
@@ -41,7 +40,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Agregar producto a un carrito (solo user)
+
 router.post('/:cid/product/:pid', authorizeRole('user'), async (req, res) => {
   try {
     const { cid, pid } = req.params;
@@ -52,7 +51,6 @@ router.post('/:cid/product/:pid', authorizeRole('user'), async (req, res) => {
   }
 });
 
-// Finalizar compra y generar ticket
 router.post('/:cid/purchase', authorizeRole('user'), async (req, res) => {
   const { cid } = req.params;
   const cart = await cartRepo.getById(cid);
@@ -75,7 +73,7 @@ router.post('/:cid/purchase', authorizeRole('user'), async (req, res) => {
     const ticket = await ticketRepo.create({
       code: uuidv4(),
       amount: total,
-      purchaser: req.user.email // Asegurate de tener el email en req.user
+      purchaser: req.user.email 
     });
     res.json({ status: 'success', ticket, productsNoStock });
   } else {
